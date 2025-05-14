@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Enviar Localização</title>
+</head>
+<body>
+  <h2>Clique para compartilhar sua localização</h2>
+  <button onclick="getLocation()">Enviar Localização</button>
+  <p id="status"></p>
+
+  <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(sendLocation, showError);
+      } else {
+        document.getElementById("status").innerText = "Geolocalização não suportada.";
+      }
+    }
+
+    function sendLocation(position) {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+
+      fetch("/localizacao", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ latitude: lat, longitude: lon })
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("status").innerText = data.status;
+      })
+      .catch(err => {
+        document.getElementById("status").innerText = "Erro ao enviar localização.";
+        console.error(err);
+      });
+    }
+
+    function showError(error) {
+      document.getElementById("status").innerText = "Erro: " + error.message;
+    }
+  </script>
+</body>
+</html>
