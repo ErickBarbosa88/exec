@@ -35,7 +35,6 @@ app.post('/localizacao', (req, res) => {
   res.json({ status: 'Localização salva com sucesso' });
 });
 
-// GET - Retorna todas as localizações
 app.get('/localizacoes', (req, res) => {
   if (!fs.existsSync(DB_FILE)) return res.json([]);
   const dados = JSON.parse(fs.readFileSync(DB_FILE));
