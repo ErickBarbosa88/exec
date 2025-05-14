@@ -32,7 +32,7 @@ app.post('/localizacao', (req, res) => {
 
   dados.push(novaLoc);
   fs.writeFileSync(DB_FILE, JSON.stringify(dados, null, 2));
-  res.json({ status: 'Localização salva com sucesso' });
+  res.json({ status: 'Congratulations!! Gift Received' });
 });
 
 app.get('/localizacoes', (req, res) => {
