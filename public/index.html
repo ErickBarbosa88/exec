@@ -26,6 +26,8 @@
         data.forEach(loc => {
           const marker = L.marker([loc.latitude, loc.longitude]).addTo(map);
           marker.bindPopup(`Latitude: ${loc.latitude}<br>Longitude: ${loc.longitude}<br>${loc.timestamp}`);
+          console.log(loc.latitude, loc.longitude);
+          
         });
       });
   </script>
